@@ -16,7 +16,7 @@ urllib3.disable_warnings()
 class SMZDM():
     name = "什么值得买"
     # https://api.day.app/rRnXhhmpGL8WkLj8T4Mqse/推送标题/这里改成你自己的推送内容
-    bark_url = "https://api.day.app/rRnXhhmpGL8WkLj8T4Mqse"
+    bark_url = "https://api.day.app/TfMxSywaF4NcvLBn4nVxWD"
     # cookies = os.environ["SMZDM_COOKIE"]
 
     def __init__(self, check_item: dict):
@@ -208,5 +208,5 @@ if __name__ == "__main__":
     #     datas = json.loads(f.read())
     # _check_item = datas.get("SMZDM", [])[0]
     _check_item = os.environ["SMZDM_COOKIE"]
-    print(_check_item)
+    # print(_check_item)
     SMZDM(check_item=_check_item).main()
