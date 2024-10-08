@@ -176,7 +176,6 @@ class SMZDM():
         content = quote_plus(content)
         url = f"{bark_url}{title}/{content}"
         headers = {"Content-type": "application/x-www-form-urlencoded"}
-        print(url)
         requests.get(url=url, headers=headers)
         return
 
