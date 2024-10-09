@@ -7,16 +7,17 @@ import time
 import requests
 import urllib3
 
+import notify
+
 # from dailycheckin import CheckIn
 from urllib.parse import quote_plus
 
 urllib3.disable_warnings()
 
-
 class SMZDM():
     name = "什么值得买"
     # https://api.day.app/rRnXhhmpGL8WkLj8T4Mqse/推送标题/这里改成你自己的推送内容
-    bark_url = "https://api.day.app/TfMxSywaF4NcvLBn4nVxWD"
+    # bark_url = "https://api.day.app/TfMxSywaF4NcvLBn4nVxWD"
     # cookies = os.environ["SMZDM_COOKIE"]
 
     def __init__(self, check_item: dict):
@@ -168,16 +169,16 @@ class SMZDM():
             ]
         return msg
     
-    def message2bark(self, bark_url, content):
-        # print("Bark 推送开始")
-        title = self.name
-        if not bark_url.endswith("/"):
-            bark_url += "/"
-        content = quote_plus(content)
-        url = f"{bark_url}{title}/{content}"
-        headers = {"Content-type": "application/x-www-form-urlencoded"}
-        requests.get(url=url, headers=headers)
-        return
+    # def message2bark(self, bark_url, content):
+    #     # print("Bark 推送开始")
+    #     title = self.name
+    #     if not bark_url.endswith("/"):
+    #         bark_url += "/"
+    #     content = quote_plus(content)
+    #     url = f"{bark_url}{title}/{content}"
+    #     headers = {"Content-type": "application/x-www-form-urlencoded"}
+    #     requests.get(url=url, headers=headers)
+    #     return
 
     def main(self):
         # cookie = self.check_item.get("cookie")
@@ -195,7 +196,10 @@ class SMZDM():
         reward_msg = self.all_reward(headers, data)
         msg += reward_msg
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
-        self.message2bark(self.bark_url, msg)
+
+        notify.send(self.name, msg)
+
+        # self.message2bark(self.bark_url, msg)
         # return msg
 
 
