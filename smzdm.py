@@ -7,7 +7,7 @@ import time
 import requests
 import urllib3
 
-import notify
+from notify import send
 
 # from dailycheckin import CheckIn
 from urllib.parse import quote_plus
@@ -197,7 +197,7 @@ class SMZDM():
         msg += reward_msg
         msg = "\n".join([f"{one.get('name')}: {one.get('value')}" for one in msg])
 
-        notify.send(self.name, msg)
+        send(self.name, msg)
 
         # self.message2bark(self.bark_url, msg)
         # return msg
