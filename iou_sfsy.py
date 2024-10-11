@@ -35,7 +35,6 @@ IS_DEV = False
 
 if os.path.isfile('notify.py'):
     from notify import send
-
     print("加载通知服务成功！")
 else:
     print("加载通知服务失败!")

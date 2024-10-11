@@ -204,6 +204,7 @@ class SMZDM():
 
 
 if __name__ == "__main__":
+    APP_NAME = '什么值得买'
     # with open(
     #     os.path.join(os.path.dirname(__file__), "config.json"),
     #     encoding="utf-8",
