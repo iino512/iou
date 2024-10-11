@@ -1,3 +1,4 @@
+# const $ = new Env("什么值得买");
 import hashlib
 import json
 import os
